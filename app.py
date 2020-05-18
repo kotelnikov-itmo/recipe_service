@@ -6,16 +6,14 @@ from conf import get_settings
 
 settings = get_settings()
 
-# BaseORMModel.metadata.create_all(bind=db_engine, checkfirst=True)
-
 
 def _abs_url(rel_path: str) -> str:
     return "/".join([settings.api_root_url, rel_path])
 
 
 app = FastAPI(
-    title="DandWine Game backend",
-    version="0.1.0",
+    title="Recipe Service",
+    version="1.0",
     debug=settings.debug,
     docs_url=_abs_url("docs"),
     redoc_url=_abs_url("redoc"),

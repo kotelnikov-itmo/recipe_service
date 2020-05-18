@@ -4,10 +4,13 @@ import uvicorn
 # import inspect
 
 from app import app
+from db import ModelBase, db_engine
+
 from conf import get_settings
 
 log = logging.getLogger('uvicorn')
 log.setLevel(logging.DEBUG)
+
 
 if __name__ == '__main__':
     settings = get_settings()
@@ -16,6 +19,8 @@ if __name__ == '__main__':
     if settings.debug:
         for k, v in settings.dict().items():
             log.debug(f"{k:10}: {v}")
+
+    ModelBase.metadata.create_all(bind=db_engine, checkfirst=True)
 
     uvicorn.run(
         'app:app',

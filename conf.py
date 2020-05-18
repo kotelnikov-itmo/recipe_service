@@ -14,7 +14,7 @@ class _AppSettings(BaseSettings):
     port: int = Field(8000, le=10000, ge=80)
     secret_key: str = Field("", env="APP_SECRET")
     api_root_url = "/api"
-    db_url: Union[PostgresDsn, AnyUrl, str] = "postgresql://user:password@localhost/dand_wine_game_db"
+    db_url: Union[PostgresDsn, AnyUrl, str] = "postgresql://user:password@localhost/db_name"
     base_dir: DirectoryPath = BASE_DIR
     # event_strict_mode: bool = Field(False, description="raise error for unsupported game event type")
     # event_log_dir: DirectoryPath = os.path.join(os.path.dirname(BASE_DIR), "game_logs/")
