@@ -1,0 +1,4 @@
+fastapi==0.54.2
+pkg-resources==0.0.0
+pydantic==1.5.1
+starlette==0.13.2
