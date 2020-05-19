@@ -17,7 +17,7 @@ class DishTypes(IntEnum):
     drink = 6
 
 
-though_table = sa.Table(
+recipe2tag_table = sa.Table(
     'recipes2tags', ModelBase.metadata,
     sa.Column('recipe_id', sa.Integer, sa.ForeignKey('recipes.id')),
     sa.Column('tag_id', sa.Integer, sa.ForeignKey('tags.id'))
@@ -42,7 +42,7 @@ class Recipe(ModelBase):
     author_id = sa.Column(sa.Integer, sa.ForeignKey('users.id'))
     likes_count = sa.Column(sa.Integer, default=0)
 
-    tags = relationship("Tag", secondary=though_table)
+    tags = relationship("Tag", secondary=recipe2tag_table)
     is_active = sa.Column(sa.Boolean)
     created_at = sa.Column(sa.DateTime, default=datetime.now)
 

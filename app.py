@@ -16,7 +16,7 @@ def _abs_url(rel_path: str) -> str:
 
 app = FastAPI(
     title="Recipe Service",
-    version="1.0",
+    version="2.0",
     debug=settings.debug,
     docs_url=_abs_url("docs"),
     redoc_url=_abs_url("redoc"),

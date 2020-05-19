@@ -43,3 +43,14 @@ class RecipeSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class RecipeCreateSchema(BaseModel):
+    title: str
+    description: str
+    result_photo: Optional[HttpUrl]
+    dish_type: DishTypes
+
+
+class RecipeUpdateSchema(RecipeCreateSchema):
+    pass
