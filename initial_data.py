@@ -1,4 +1,5 @@
-from models import Tag, User, Recipe, DishTypes
+from recipes.models import Tag, Recipe, DishTypes
+from auth.models import User
 from db import LocalSession
 from sqlalchemy.orm import Session
 

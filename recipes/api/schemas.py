@@ -2,23 +2,7 @@ from datetime import datetime
 from typing import List, Optional
 from pydantic import BaseModel, HttpUrl
 
-from models import DishTypes
-
-
-class UserCreateSchema(BaseModel):
-    username: str
-    password: str
-
-
-class UserProfileSchema(BaseModel):
-    id: int
-    username: str
-    is_active: bool
-    favorites: Optional[List[str]]
-    owned_recipes_count: int = 0
-
-    class Config:
-        orm_mode = True
+from recipes.models import DishTypes
 
 
 class ShortUserProfileSchema(BaseModel):

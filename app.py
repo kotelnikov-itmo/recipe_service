@@ -1,7 +1,10 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from starlette.middleware.cors import CORSMiddleware
 
-from api.routes import router as api_router
+from recipes.api.routes import router as api_router
+from auth.api.routes import router as auth_router
+from auth.api.utils import get_current_user
+
 from conf import get_settings
 
 settings = get_settings()
@@ -26,4 +29,14 @@ app.add_middleware(
 )
 
 # register route
-app.include_router(api_router, prefix=settings.api_root_url)
+app.include_router(
+    auth_router,
+    prefix=settings.api_root_url + "/auth",
+    tags=['Auth']
+)
+app.include_router(
+    api_router,
+    prefix=settings.api_root_url,
+    tags=['Recipes'],
+    dependencies=[Depends(get_current_user),]
+)

@@ -3,20 +3,12 @@ from typing import List
 from fastapi import APIRouter, Depends
 
 from db import get_db
-from .schemas import UserCreateSchema, UserProfileSchema, RecipeFilter, RecipeSchema
-from services import UserService, RecipeService
-
+from .schemas import RecipeFilter, RecipeSchema
+from auth.api.schemas import UserProfileSchema
+from recipes.services import RecipeService
+from auth.services import UserService
 
 router = APIRouter()
-
-
-@router.post("/users", response_model=UserProfileSchema)
-async def create_user(user_data: UserCreateSchema,
-                      db=Depends(get_db)):
-    """Регистрация нового пользователя;
-    """
-    user = UserService(db).create_user(**user_data.dict())
-    return user
 
 
 @router.get("/users/{user_id}", response_model=UserProfileSchema)
