@@ -1,10 +1,10 @@
-#Recipe service
+# Recipe service
 
-##global req
+## global req
 1. Python 3.8+
 2. PostgeSQL 10+
 
-##install
+## install
 1. clone this repo
 2. Install dependencies
     ```
@@ -20,7 +20,7 @@
     python run.py
     ```
 
-##API Docs
+## API Docs
 Swagger documentation are available there: http://localhost:8000/api/docs#/
 
 
